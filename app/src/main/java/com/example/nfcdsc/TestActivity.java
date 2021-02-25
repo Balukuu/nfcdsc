@@ -13,7 +13,6 @@ public class TestActivity extends AppCompatActivity {
     NfcManager mNfcManager;
     NfcAdapter mAdapter;
 
-    ImageView sign;
     TextView nfcDetectedMsg;
 
     @Override
@@ -21,18 +20,15 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        sign = findViewById(R.id.sign);
-        nfcDetectedMsg = findViewById(R.id.test_btn);
+        nfcDetectedMsg = findViewById(R.id.nfc_msg);
 
         mNfcManager = (NfcManager) getSystemService(NFC_SERVICE);
-        mAdapter = NfcAdapter.getDefaultAdapter(this);
+        mAdapter = mNfcManager.getDefaultAdapter();
 
         if (mAdapter!=null && mAdapter.isEnabled()){
             nfcDetectedMsg.setText("NFC IS ENABLED");
-            sign.setImageResource(R.drawable.ic_baseline_check_box_24);
         } else {
             nfcDetectedMsg.setText("NFC IS DISABLED");
-            sign.setImageResource(R.drawable.ic_baseline_cancel_presentation_24);
         }
 
     }
