@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".TestActivity">
 
+    <ImageView
+        android:id="@+id/sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/nfc_msg"
+        app:layout_constraintEnd_toEndOf="@+id/nfc_msg"
+        app:layout_constraintStart_toStartOf="@+id/nfc_msg"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
     <TextView
         android:id="@+id/nfc_msg"
         android:layout_width="wrap_content"
@@ -16,5 +26,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
