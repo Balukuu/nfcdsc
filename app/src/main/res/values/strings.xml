@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NFCDSC</string>
+    <string name="nfc_detected">NFC DETECTED</string>
 </resources>
