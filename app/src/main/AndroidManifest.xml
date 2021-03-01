@@ -16,8 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCDSC">
 
-        <activity android:name=".TestActivity"/>
-
         <activity android:name=".MainActivity">
 
             <intent-filter>
@@ -26,12 +24,9 @@
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <data android:mimeType="text/plain"/>
             </intent-filter>
-
-            <meta-data
-                android:name="android.nfc.action.TECH_DISCOVERED"
-                android:resource="@xml/nfc_tech_filter"/>
 
         </activity>
 
