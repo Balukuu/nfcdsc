@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-//        enableNdefExchangeMode();
+        //enableNdefExchangeMode();
     }
 
     @Override
@@ -134,38 +134,27 @@ public class MainActivity extends Activity {
         }
     };
 
-    private View.OnClickListener mTagWriter = new View.OnClickListener() {
-        @Override
-        public void onClick(View arg0) {
-            // Write to a tag for as long as the dialog is shown.
-            disableNdefExchangeMode();
-            enableTagWriteMode();
+    private View.OnClickListener mTagWriter = arg0 -> {
+        // Write to a tag for as long as the dialog is shown.
+        disableNdefExchangeMode();
+        enableTagWriteMode();
 
-            new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
-                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            disableTagWriteMode();
-                            enableNdefExchangeMode();
-                        }
-                    }).create().show();
-        }
+        new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
+                .setOnCancelListener(dialog -> {
+
+                    disableTagWriteMode();
+                    enableNdefExchangeMode();
+
+                }).create().show();
     };
 
     private void promptForContent(final NdefMessage msg) {
         new AlertDialog.Builder(this).setTitle("Replace current content?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        String body = new String(msg.getRecords()[0].getPayload());
-                        setNoteBody(body);
-                    }
+                .setPositiveButton("Yes", (arg0, arg1) -> {
+                    String body = new String(msg.getRecords()[0].getPayload());
+                    setNoteBody(body);
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                    }
+                .setNegativeButton("No", (arg0, arg1) -> {
                 }).show();
     }
 
@@ -191,6 +180,7 @@ public class MainActivity extends Activity {
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
                 || NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
             Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
             if (rawMsgs != null) {
                 msgs = new NdefMessage[rawMsgs.length];
                 for (int i = 0; i < rawMsgs.length; i++) {

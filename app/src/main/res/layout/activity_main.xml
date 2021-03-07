@@ -4,16 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/ic_bg_real">
 
-    <Button
-        android:id="@+id/test_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
-        android:text="TEST ACTIVITY"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="346dp"
+        android:layout_height="588dp"
+        android:background="@drawable/design"
+        android:orientation="horizontal"
+        android:padding="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338">
+
+        <View
+            android:id="@+id/back_view"
+            android:layout_width="wrap_content"
+            android:layout_height="218dp"
+            android:background="@drawable/back_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/test_btn"
+            android:layout_width="215dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/back_view"
+            android:text="account balance"
+            app:layout_constraintEnd_toEndOf="@+id/back_view"
+            app:layout_constraintStart_toStartOf="@+id/back_view"
+            app:layout_constraintTop_toBottomOf="@+id/back_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
