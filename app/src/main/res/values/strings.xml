@@ -3,4 +3,6 @@
     <string name="nfc_detected">NFC DETECTED</string>
     <string name="write">WRITE</string>
     <string name="enter_sumn">Enter sumn</string>
+    <string name="account_balance">account balance</string>
+    <string name="tap_txt">Tap your phone onto the POS to pay </string>
 </resources>

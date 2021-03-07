@@ -55,9 +55,10 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        setContentView(R.layout.activity_main);
 
-        setContentView(R.layout.main);
+        //mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+
         findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
         mNote = ((EditText) findViewById(R.id.note));
         mNote.addTextChangedListener(mTextWatcher);
@@ -89,7 +90,11 @@ public class MainActivity extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-        //enableNdefExchangeMode();
+
+        enableNdefExchangeMode();
+
+        toast("exchanging data from the p2p nfc ");
+
     }
 
     @Override
@@ -105,12 +110,17 @@ public class MainActivity extends Activity {
         if (!mWriteMode && NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
+
+            toast("P2P DATA EXCHANGE");
+
         }
 
         // Tag writing mode
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             writeTag(getNoteAsNdef(), detectedTag);
+
+            toast("WRITING TO TAG");
         }
     }
 
