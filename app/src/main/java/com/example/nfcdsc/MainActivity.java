@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
         mNote = ((EditText) findViewById(R.id.note));
