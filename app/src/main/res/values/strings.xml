@@ -5,4 +5,9 @@
     <string name="enter_sumn">Enter sumn</string>
     <string name="account_balance">account balance</string>
     <string name="tap_txt">Tap your phone onto the POS to pay </string>
+    <string name="top_up_txt">
+        Top up your account balance from your mobile money account.
+        Enter the amount of money to top up in the field below
+    </string>
+    <string name="icon_desc">ICON IMAGE FOR TAP2PAY</string>
 </resources>
