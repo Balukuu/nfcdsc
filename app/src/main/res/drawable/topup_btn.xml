@@ -5,10 +5,6 @@
         android:bottomLeftRadius="4dp"
         android:bottomRightRadius="4dp"
         android:topLeftRadius="4dp"
-        android:topRightRadius="4dp"
-        />
-    <stroke
-        android:width="3dp"
-        android:color="@color/design_default_color_primary_dark"
-        />
+        android:topRightRadius="4dp" />
+    <solid android:color="@color/black"/>
 </shape>

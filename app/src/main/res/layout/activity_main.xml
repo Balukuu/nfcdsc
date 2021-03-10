@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/ic_bg_real">
+    android:background="@drawable/ic_new_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="346dp"
@@ -73,15 +74,15 @@
             app:layout_constraintTop_toBottomOf="@+id/note" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/tap2pay_icon"
             android:layout_width="106dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_baseline_tap_and_play_24"
             app:layout_constraintBottom_toBottomOf="@+id/back_view"
             app:layout_constraintEnd_toEndOf="@+id/back_view"
             app:layout_constraintStart_toStartOf="@+id/back_view"
-            app:layout_constraintTop_toTopOf="@+id/back_view" />
-
+            app:layout_constraintTop_toTopOf="@+id/back_view"
+            android:contentDescription="@string/icon_desc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
