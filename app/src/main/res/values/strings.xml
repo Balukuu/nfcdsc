@@ -13,4 +13,9 @@
     <string name="top_up_btn_txt"> TOP UP </string>
     <string name="icon_desc">ICON IMAGE FOR TAP2PAY</string>
     <string name="sign_up">Sign up</string>
+    <string name="payment_title"> Payment History </string>
+    <string name="username">Username</string>
+    <string name="user_avatar">user avatar</string>
+    <string name="balance">Ugx: 245,000</string>
+    <string name="date">21/02/2021</string>
 </resources>

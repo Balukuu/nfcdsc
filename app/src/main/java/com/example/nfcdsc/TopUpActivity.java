@@ -18,7 +18,7 @@ public class TopUpActivity extends AppCompatActivity {
 
         topUp = findViewById(R.id.write_tag);
         topUp.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, PaymentHistory.class));
         });
     }
 }
