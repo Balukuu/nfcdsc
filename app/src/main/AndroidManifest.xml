@@ -15,8 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCDSC">
-        <activity android:name=".PaymentHistory"></activity>
-        <activity android:name=".Login" /> <!-- ACTIVITIES -->
+
+        <!-- ACTIVITIES -->
+        <activity android:name=".PaymentHistory"/>
+        <activity android:name=".SignUp" />
         <activity
             android:name=".TopUpActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
