@@ -9,8 +9,8 @@
     android:background="@drawable/ic_new_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="349dp"
-        android:layout_height="630dp"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
         android:padding="40dp"
@@ -20,53 +20,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338">
 
-        <View
-            android:id="@+id/back_view"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:background="@drawable/back_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:id="@+id/back_view_outline"
-            android:layout_width="250dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/back_view_outline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginRight="4dp" />
-
-        <ImageView
-            android:id="@+id/top_up_icon"
-            android:layout_width="106dp"
-            android:layout_height="100dp"
-            android:contentDescription="@string/icon_desc"
-            android:src="@drawable/ic_baseline_tap_and_play_24"
-            app:layout_constraintBottom_toBottomOf="@+id/back_view"
-            app:layout_constraintEnd_toEndOf="@+id/back_view"
-            app:layout_constraintStart_toStartOf="@+id/back_view"
-            app:layout_constraintTop_toTopOf="@+id/back_view" />
-
         <TextView
             android:id="@+id/tap_txtView"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/design_default_color_primary_dark"
+            android:layout_marginTop="15dp"
             android:gravity="center_horizontal"
             android:text="@string/top_up_txt"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/design_default_color_primary_dark"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/back_view"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/back_view"
-            app:layout_constraintTop_toBottomOf="@+id/back_view" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/note"
@@ -90,13 +58,12 @@
             android:id="@+id/write_tag"
             android:layout_width="245dp"
             android:layout_height="50dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/topup_btn"
             android:text="@string/top_up_btn_txt"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/back_view"
-            app:layout_constraintStart_toStartOf="@+id/back_view"
+            app:layout_constraintEnd_toEndOf="@+id/note"
+            app:layout_constraintStart_toStartOf="@+id/note"
             app:layout_constraintTop_toBottomOf="@+id/note" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
