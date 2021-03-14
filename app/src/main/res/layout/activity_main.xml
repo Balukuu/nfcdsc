@@ -9,11 +9,11 @@
     android:background="@drawable/ic_new_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="346dp"
-        android:layout_height="588dp"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
-        android:padding="50dp"
+        android:padding="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,10 +22,20 @@
 
         <View
             android:id="@+id/back_view"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="218dp"
             android:background="@drawable/back_view"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/back_view_outline"
+            android:layout_width="240dp"
+            android:layout_height="218dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/back_view_outline"
+            app:layout_constraintEnd_toEndOf="@id/back_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,9 +62,11 @@
             android:layout_marginTop="50dp"
             android:gravity="top"
             android:hint="@string/enter_sumn"
-            style="@style/Widget.AppCompat.EditText"
+            android:background="@drawable/back_view_outline"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark"
             android:padding="5dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/tap_txtView"

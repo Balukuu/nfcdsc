@@ -93,8 +93,6 @@ public class MainActivity extends Activity {
 
         enableNdefExchangeMode();
 
-        toast("exchanging data from the p2p nfc ");
-
     }
 
     @Override
