@@ -36,9 +36,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
-            android:id="@+id/top_img"
+            android:id="@+id/top_up_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -59,9 +58,9 @@
             android:textAlignment="center"
             android:textColorHint="@color/design_default_color_primary_dark"
             android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/top_img"
-            app:layout_constraintStart_toStartOf="@+id/top_img"
-            app:layout_constraintTop_toBottomOf="@+id/top_img"
+            app:layout_constraintEnd_toEndOf="@+id/top_up_img"
+            app:layout_constraintStart_toStartOf="@+id/top_up_img"
+            app:layout_constraintTop_toBottomOf="@+id/top_up_img"
             android:textAppearance="?attr/textAppearanceSubtitle1"
             tools:ignore="RtlCompat" />
 
