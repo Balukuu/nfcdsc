@@ -57,6 +57,7 @@
             android:lines="1"
             android:inputType="number"
             android:textAlignment="center"
+            android:textColor="@color/design_default_color_primary_dark"
             android:textColorHint="@color/design_default_color_primary_dark"
             android:padding="6dp"
             app:layout_constraintEnd_toEndOf="@+id/top_img"

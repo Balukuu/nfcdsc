@@ -92,7 +92,7 @@
             android:layout_marginTop="25dp"
             android:text="@string/username"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="@color/white"
+            android:textColor="@color/design_default_color_primary_dark"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/user_avatar"
             app:layout_constraintTop_toTopOf="@+id/back_view" />
