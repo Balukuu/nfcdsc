@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">NFCDSC</string>
+    <string name="app_name">TAP2PAY</string>
     <string name="nfc_detected">NFC DETECTED</string>
     <string name="write">WRITE</string>
-    <string name="enter_sumn">Enter sumn</string>
+    <string name="enter_amount">Enter Amount </string>
     <string name="account_balance">account balance</string>
-    <string name="tap_txt">Tap your phone onto the POS to pay </string>
+    <string name="tap_txt">
+        Tap the back of your phone onto the POS to pay
+    </string>
     <string name="top_up_txt">
         Top up your account balance from your mobile money account.
         Enter the amount of money to top up in the field below

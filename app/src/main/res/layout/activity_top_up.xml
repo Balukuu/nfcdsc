@@ -52,7 +52,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="@string/enter_sumn"
+            android:hint="@string/enter_amount"
             android:background="@drawable/back_view_outline"
             android:lines="1"
             android:inputType="number"

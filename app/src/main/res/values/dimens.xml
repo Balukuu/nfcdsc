@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="date_padding">8dp</dimen>
+    <dimen name="rec_view_width">250dp</dimen>
+    <dimen name="rec_view_height">420dp</dimen>
 </resources>

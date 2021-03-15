@@ -108,8 +108,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/payment_history_list"
-            android:layout_width="232dp"
-            android:layout_height="413dp"
+            android:layout_width="@dimen/rec_view_width"
+            android:layout_height="@dimen/rec_view_height"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

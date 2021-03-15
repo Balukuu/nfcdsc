@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="top"
-            android:hint="@string/enter_sumn"
+            android:hint="@string/enter_amount"
             android:background="@drawable/back_view_outline"
             android:importantForAutofill="no"
             android:inputType="text"
