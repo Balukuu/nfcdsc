@@ -160,6 +160,11 @@ public class MainActivity extends Activity {
         new AlertDialog.Builder(this).setTitle("Replace current content?")
                 .setPositiveButton("Yes", (arg0, arg1) -> {
                     String body = new String(msg.getRecords()[0].getPayload());
+
+                    Intent intent = new Intent(this, PaymentHistory.class);
+                    intent.putExtra("MESSAGE", body);
+                    startActivity(intent);
+
                     setNoteBody(body);
                 })
                 .setNegativeButton("No", (arg0, arg1) -> {
