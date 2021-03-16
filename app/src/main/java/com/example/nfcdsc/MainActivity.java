@@ -281,6 +281,10 @@ public class MainActivity extends Activity {
         return false;
     }
 
+    public void viewAccountBalance(View view){
+        startActivity(new Intent(this, PaymentHistory.class));
+    }
+
     private void toast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }

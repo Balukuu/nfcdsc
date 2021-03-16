@@ -7,5 +7,4 @@
     tools:context=".SettingsActivity"
     android:background="@drawable/ic_new_bg">
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
