@@ -19,7 +19,6 @@ package com.example.nfcdsc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
@@ -72,6 +71,7 @@ public class MainActivity extends Activity {
         try {
             ndefDetected.addDataType("text/plain");
         } catch (MalformedMimeTypeException e) { }
+
         mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
 
         // Intent filters for writing to a tag
@@ -90,9 +90,7 @@ public class MainActivity extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-
         enableNdefExchangeMode();
-
     }
 
     @Override
@@ -112,7 +110,6 @@ public class MainActivity extends Activity {
             toast("P2P DATA EXCHANGE");
 
         }
-
         // Tag writing mode
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
