@@ -9,11 +9,11 @@
     android:background="@drawable/ic_new_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="346dp"
-        android:layout_height="588dp"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
-        android:padding="50dp"
+        android:padding="45dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,23 +22,44 @@
 
         <View
             android:id="@+id/back_view"
-            android:layout_width="wrap_content"
-            android:layout_height="218dp"
+            android:layout_width="240dp"
+            android:layout_height="200dp"
             android:background="@drawable/back_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/tap2pay_icon"
+            android:layout_width="106dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_tap_and_play_24"
+            app:layout_constraintBottom_toBottomOf="@+id/back_view"
+            app:layout_constraintEnd_toEndOf="@+id/back_view"
+            app:layout_constraintStart_toStartOf="@+id/back_view"
+            app:layout_constraintTop_toTopOf="@+id/back_view"
+            android:contentDescription="@string/icon_desc" />
+
+        <View
+            android:id="@+id/back_view_outline"
+            android:layout_width="240dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/back_view_outline"
+            app:layout_constraintEnd_toEndOf="@id/back_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tap_txtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
             android:text="@string/tap_txt"
             android:textAlignment="center"
-            android:textColor="@color/design_default_color_primary_dark"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/design_default_color_primary_dark"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/back_view"
             app:layout_constraintHorizontal_bias="0.0"
@@ -51,10 +72,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="top"
-            android:hint="@string/enter_sumn"
-            style="@style/Widget.AppCompat.EditText"
+            android:hint="@string/enter_amount"
+            android:background="@drawable/back_view_outline"
             android:importantForAutofill="no"
             android:inputType="text"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark"
             android:padding="5dp"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="@+id/tap_txtView"
@@ -66,24 +89,28 @@
             android:id="@+id/write_tag"
             android:layout_width="251dp"
             android:layout_height="54dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/topup_btn"
-            android:text="@string/account_balance"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/pay"
             app:layout_constraintEnd_toEndOf="@+id/back_view"
             app:layout_constraintStart_toStartOf="@+id/back_view"
             app:layout_constraintTop_toBottomOf="@+id/note" />
 
-        <ImageView
-            android:id="@+id/tap2pay_icon"
-            android:layout_width="106dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_baseline_tap_and_play_24"
-            app:layout_constraintBottom_toBottomOf="@+id/back_view"
-            app:layout_constraintEnd_toEndOf="@+id/back_view"
-            app:layout_constraintStart_toStartOf="@+id/back_view"
-            app:layout_constraintTop_toTopOf="@+id/back_view"
-            android:contentDescription="@string/icon_desc" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="147dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="194dp"
+            android:layout_marginLeft="194dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/account_balance"
+            android:onClick="viewAccountBalance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/design_default_color_primary_dark"
+            app:layout_constraintEnd_toEndOf="@+id/write_tag"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/write_tag"
+            app:layout_constraintTop_toBottomOf="@+id/write_tag" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

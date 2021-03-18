@@ -19,7 +19,6 @@ package com.example.nfcdsc;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentFilter.MalformedMimeTypeException;
@@ -72,6 +71,7 @@ public class MainActivity extends Activity {
         try {
             ndefDetected.addDataType("text/plain");
         } catch (MalformedMimeTypeException e) { }
+
         mNdefExchangeFilters = new IntentFilter[] { ndefDetected };
 
         // Intent filters for writing to a tag
@@ -90,11 +90,7 @@ public class MainActivity extends Activity {
             setNoteBody(new String(payload));
             setIntent(new Intent()); // Consume this intent.
         }
-
         enableNdefExchangeMode();
-
-        toast("exchanging data from the p2p nfc ");
-
     }
 
     @Override
@@ -114,7 +110,6 @@ public class MainActivity extends Activity {
             toast("P2P DATA EXCHANGE");
 
         }
-
         // Tag writing mode
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -162,6 +157,11 @@ public class MainActivity extends Activity {
         new AlertDialog.Builder(this).setTitle("Replace current content?")
                 .setPositiveButton("Yes", (arg0, arg1) -> {
                     String body = new String(msg.getRecords()[0].getPayload());
+
+                    Intent intent = new Intent(this, PaymentHistory.class);
+                    intent.putExtra("MESSAGE", body);
+                    startActivity(intent);
+
                     setNoteBody(body);
                 })
                 .setNegativeButton("No", (arg0, arg1) -> {
@@ -281,6 +281,10 @@ public class MainActivity extends Activity {
         }
 
         return false;
+    }
+
+    public void viewAccountBalance(View view){
+        startActivity(new Intent(this, PaymentHistory.class));
     }
 
     private void toast(String text) {
