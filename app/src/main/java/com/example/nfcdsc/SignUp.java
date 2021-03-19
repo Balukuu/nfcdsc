@@ -40,6 +40,7 @@ public class SignUp extends AppCompatActivity {
                 intent.putExtra("BALANCE", lastname);
                 intent.putExtra("CONTACT", phone);
                 startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(this, " ENTER YOUR DETAILS ",
                         Toast.LENGTH_SHORT).show();
