@@ -28,7 +28,7 @@
             android:layout_marginLeft="2dp"
             android:layout_marginTop="2dp"
             android:text="@string/payment_title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/design_default_color_primary_dark"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"

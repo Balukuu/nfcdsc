@@ -16,7 +16,7 @@ public class PaymentHistory extends AppCompatActivity {
     TextView account_balance_txt;
 
     String account_balance;
-    double current_amount = 50000d;
+    double current_amount = 60000d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +32,14 @@ public class PaymentHistory extends AppCompatActivity {
 
         account_balance_txt = findViewById(R.id.acc_balance);
 
-        double current_balance = Integer.parseInt(account_balance);
+        double current_balance = Double.parseDouble(account_balance);
 
         double updated_balance = current_balance-current_amount;
 
         account_balance = String.valueOf(updated_balance);
+
+        // Formatting the account balance for the view
+        //String my_acc_balance = String.format("%,d", account_balance);
 
         account_balance_txt.setText(account_balance);
         //messageView.setText((int) current_amount);
