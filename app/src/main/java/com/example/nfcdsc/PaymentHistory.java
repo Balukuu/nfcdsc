@@ -14,6 +14,7 @@ import com.example.nfcdsc.adapters.RecyclerViewAdapter;
 public class PaymentHistory extends AppCompatActivity {
 
     String account_balance;
+    double current_amount = 120000d;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class PaymentHistory extends AppCompatActivity {
         account_balance = intent.getStringExtra("MESSAGE");
         TextView messageView = findViewById(R.id.acc_balance);
 
-        messageView.setText(account_balance);
+        messageView.setText((int) current_amount);
 
         populateRecyclerView();
 
