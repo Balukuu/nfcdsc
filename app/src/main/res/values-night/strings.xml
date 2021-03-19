@@ -2,4 +2,5 @@
 <resources>
     <string name="account_balance">account balance</string>
     <string name="tap_txt">Tap your phone onto the POS to pay </string>
+    <string name="first_name">Enter First Name</string>
 </resources>
