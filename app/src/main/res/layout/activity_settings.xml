@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="350dp"
-        android:layout_height="654dp"
+        android:layout_height="600dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
         android:padding="20dp"
@@ -23,7 +23,7 @@
             android:id="@+id/history_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="35dp"
             android:text="@string/acc_details"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/design_default_color_primary_dark"
@@ -36,7 +36,7 @@
             android:id="@+id/user_avatar"
             android:layout_width="78dp"
             android:layout_height="78dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="15dp"
             android:contentDescription="@string/user_avatar"
             android:src="@drawable/ic_launcher_foreground"
             android:tint="@color/design_default_color_primary_dark"
@@ -45,122 +45,113 @@
             app:layout_constraintStart_toStartOf="@+id/history_txt"
             app:layout_constraintTop_toBottomOf="@+id/history_txt" />
 
-        <LinearLayout
-            android:id="@+id/names"
-            android:layout_width="250dp"
+        <!-- Layout for the user names -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/names_layout"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="@+id/user_avatar"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/user_avatar"
             app:layout_constraintTop_toBottomOf="@+id/user_avatar">
 
-            <TextView
-                android:id="@+id/user_name"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/names_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
                 android:text="@string/username"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="16sp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/names_editText"
-                android:layout_width="131dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/names_field"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:inputType="text"
-                android:textAlignment="textEnd"
-                android:text="@string/balance"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="14sp"
-                tools:ignore="LabelFor"
-                android:gravity="end" />
+                android:hint="@string/username"
+                android:textColorHint="@color/design_default_color_primary_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/names_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/acc_bal"
-            android:layout_width="250dp"
+        <!-- Layout for the account balance -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/balance_layout"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/names"
-            app:layout_constraintStart_toStartOf="@+id/names"
-            app:layout_constraintTop_toBottomOf="@+id/names">
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/names_layout"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="@+id/names_layout"
+            app:layout_constraintTop_toBottomOf="@+id/names_layout" >
 
-            <TextView
-                android:id="@+id/settings_acc_bal"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/balance_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"
                 android:text="@string/settings_acc_bal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="16sp"
-                android:layout_width="wrap_content" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/settings_balance"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/balance_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:inputType="text"
-                android:textAlignment="textEnd"
-                android:text="@string/balance"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="14sp"
-                tools:ignore="LabelFor"
-                android:layout_gravity="end" />
+                android:hint="@string/balance"
+                android:textColorHint="@color/design_default_color_primary_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/balance_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <LinearLayout
-            android:id="@+id/phone_num"
-            android:layout_width="250dp"
+        <!-- Layout for the account balance -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phone_layout"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/acc_bal"
-            app:layout_constraintStart_toStartOf="@+id/acc_bal"
-            app:layout_constraintTop_toBottomOf="@+id/acc_bal">
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/balance_layout"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="@+id/balance_layout"
+            app:layout_constraintTop_toBottomOf="@+id/balance_layout" >
 
-            <TextView
-                android:id="@+id/settings_phone"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/phone_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/username"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:text="@string/settings_phone_num"
                 android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="16sp"
-                android:layout_width="wrap_content" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/settings_phone_editTxt"
-                android:layout_width="138dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_field"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="0dp"
-                android:layout_marginRight="0dp"
-                android:autofillHints="no"
-                android:gravity="end"
-                android:inputType="phone"
-                android:text="@string/balance"
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="14sp"
-                tools:ignore="LabelFor" />
+                android:hint="@string/phone"
+                android:textColorHint="@color/design_default_color_primary_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/phone_label"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

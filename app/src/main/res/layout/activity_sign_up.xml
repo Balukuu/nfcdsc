@@ -104,7 +104,7 @@
             tools:ignore="RtlCompat" />
 
         <Button
-            android:id="@+id/signup"
+            android:id="@+id/sign_up_btn"
             android:layout_width="@dimen/btn_width"
             android:layout_height="@dimen/btn_height"
             android:layout_marginTop="@dimen/default_marginTop"
