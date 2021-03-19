@@ -37,7 +37,7 @@ public class PaymentHistory extends AppCompatActivity {
 
         Intent stringIntent = getIntent();
 
-        String data = stringIntent.getStringExtra("MESSAGE");
+        String data = stringIntent.getStringExtra("AMOUNT CHARGED");
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, data);
 

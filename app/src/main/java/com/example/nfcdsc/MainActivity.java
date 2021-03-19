@@ -17,7 +17,6 @@
 package com.example.nfcdsc;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -36,6 +35,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import java.io.IOException;
 
@@ -154,14 +155,13 @@ public class MainActivity extends Activity {
     };
 
     private void promptForContent(final NdefMessage msg) {
-        new AlertDialog.Builder(this).setTitle("Replace current content?")
+        new AlertDialog.Builder(this)
+                .setTitle("Are you sure ?")
                 .setPositiveButton("Yes", (arg0, arg1) -> {
                     String body = new String(msg.getRecords()[0].getPayload());
-
                     Intent intent = new Intent(this, PaymentHistory.class);
-                    intent.putExtra("MESSAGE", body);
+                    intent.putExtra("AMOUNT CHARGED", body);
                     startActivity(intent);
-
                     setNoteBody(body);
                 })
                 .setNegativeButton("No", (arg0, arg1) -> {
