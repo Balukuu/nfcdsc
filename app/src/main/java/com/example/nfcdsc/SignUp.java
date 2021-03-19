@@ -36,7 +36,9 @@ public class SignUp extends AppCompatActivity {
 
             if (!firstname.isEmpty() && !lastname.isEmpty() && !phone.isEmpty()) {
                 Intent intent = new Intent(this, SettingsActivity.class);
-                intent.putExtra("MESSAGE", firstname);
+                intent.putExtra("USERNAME", firstname);
+                intent.putExtra("BALANCE", lastname);
+                intent.putExtra("CONTACT", phone);
                 startActivity(intent);
             } else {
                 Toast.makeText(this, " ENTER YOUR DETAILS ",
