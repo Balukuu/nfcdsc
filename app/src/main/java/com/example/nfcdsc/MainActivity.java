@@ -158,9 +158,14 @@ public class MainActivity extends Activity {
         new AlertDialog.Builder(this)
                 .setTitle("Are you sure ?")
                 .setPositiveButton("Yes", (arg0, arg1) -> {
+
                     String body = new String(msg.getRecords()[0].getPayload());
+
+                    //Converting the received data to double for the calculations
+                    double amount_paid = Integer.parseInt(body);
+
                     Intent intent = new Intent(this, PaymentHistory.class);
-                    intent.putExtra("AMOUNT CHARGED", body);
+                    intent.putExtra("AMOUNT CHARGED", amount_paid);
                     startActivity(intent);
                     setNoteBody(body);
                 })

@@ -5,6 +5,7 @@
     <string name="pay">PAY</string>
     <string name="enter_amount">Enter Amount </string>
     <string name="account_balance"> view account balance </string>
+    <string name="account_balance_txt"> Account balance </string>
     <string name="tap_txt">
         Tap the back of your phone onto the POS to pay
     </string>

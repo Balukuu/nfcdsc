@@ -24,7 +24,7 @@ public class TopUpActivity extends AppCompatActivity {
                 String msg = amount.getText().toString();
 
                 if (!msg.isEmpty()) {
-                    Intent intent = new Intent(this, MainActivity.class);
+                    Intent intent = new Intent(this, PaymentHistory.class);
                     intent.putExtra("MESSAGE", msg);
                     startActivity(intent);
                     amount.setText("");
