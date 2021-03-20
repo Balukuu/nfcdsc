@@ -100,7 +100,4 @@ public class PaymentHistory extends AppCompatActivity {
         });
     }
 
-    public void viewSettings(View view){
-        startActivity(new Intent(this, SettingsActivity.class));
-    }
 }
