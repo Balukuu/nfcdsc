@@ -282,10 +282,6 @@ public class MainActivity extends Activity {
         return false;
     }
 
-    public void viewAccountBalance(View view){
-        startActivity(new Intent(this, PaymentHistory.class));
-    }
-
     // Function handling the bottom nav bar
     private void handleBottomNavBarActions(){
 
