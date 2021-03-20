@@ -56,7 +56,7 @@ public class TopUpActivity extends AppCompatActivity {
 
         // CHECKING THE CURRENT CLICKED BOTTOM NAV BAR MENU ITEM
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(2);
+        MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
