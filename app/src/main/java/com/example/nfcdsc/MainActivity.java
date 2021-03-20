@@ -153,13 +153,16 @@ public class MainActivity extends Activity {
         disableNdefExchangeMode();
         enableTagWriteMode();
 
-        new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Touch tag to write")
                 .setOnCancelListener(dialog -> {
 
                     disableTagWriteMode();
                     enableNdefExchangeMode();
 
-                }).create().show();
+                })
+                .create()
+                .show();
     };
 
     private void promptForContent(final NdefMessage msg) {
