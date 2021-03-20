@@ -64,6 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.tap2pay:
+                    startActivity(new Intent(this, MainActivity.class));
                     break;
                 case R.id.topup_activity:
                     startActivity(new Intent(this, TopUpActivity.class));
@@ -72,9 +73,7 @@ public class SettingsActivity extends AppCompatActivity {
                     startActivity(new Intent(this, PaymentHistory.class));
                     break;
                 case R.id.profile:
-                    startActivity(new Intent(this, SettingsActivity.class));
                     break;
-
             }
             return false;
         });
