@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
-    android:background="@drawable/ic_new_bg">
+    android:background="@drawable/ic_new_bg"
+    tools:context=".SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="350dp"
-        android:layout_height="600dp"
+        android:layout_width="270dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/history_txt"
@@ -39,11 +38,11 @@
             android:layout_marginTop="15dp"
             android:contentDescription="@string/user_avatar"
             android:src="@drawable/ic_launcher_foreground"
-            android:tint="@color/design_default_color_primary_dark"
             app:layout_constraintEnd_toEndOf="@+id/history_txt"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/history_txt"
-            app:layout_constraintTop_toBottomOf="@+id/history_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/history_txt"
+            app:tint="@color/design_default_color_primary_dark" />
 
         <!-- Layout for the user names -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="@+id/names_layout"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/names_layout"
-            app:layout_constraintTop_toBottomOf="@+id/names_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/names_layout">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/balance_label"
@@ -114,6 +113,7 @@
                 android:hint="@string/balance"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="@color/black"
+                android:textColorHint="@color/design_default_color_primary_dark"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/balance_label"
@@ -133,7 +133,7 @@
             app:layout_constraintEnd_toEndOf="@+id/balance_layout"
             app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="@+id/balance_layout"
-            app:layout_constraintTop_toBottomOf="@+id/balance_layout" >
+            app:layout_constraintTop_toBottomOf="@+id/balance_layout">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/phone_label"
@@ -152,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/phone"
+                android:textColorHint="@color/design_default_color_primary_dark"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -162,6 +163,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/phone_label" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/settings_phone_num"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
+            app:hintTextColor="@color/design_default_color_primary_dark"
+            app:layout_constraintEnd_toEndOf="@+id/phone_layout"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/phone_layout"
+            app:layout_constraintTop_toBottomOf="@+id/phone_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
