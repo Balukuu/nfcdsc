@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -55,13 +57,16 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void handleBottomNavBarActions(){
-
         //Handling the Bottom navigation view actions
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_nav_bar);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+        // CHECKING THE CURRENT CLICKED BOTTOM NAV BAR MENU ITEM
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.tap2pay:
                     startActivity(new Intent(this, MainActivity.class));
