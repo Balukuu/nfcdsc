@@ -16,12 +16,21 @@
     <string name="top_up_hint"> Enter amount  </string>
     <string name="top_up_btn_txt"> TOP UP </string>
     <string name="icon_desc">ICON IMAGE FOR TAP2PAY</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_up">SIGN UP </string>
     <string name="payment_title"> Payment History </string>
     <string name="username">Username</string>
     <string name="user_avatar">user avatar</string>
-    <string name="balance">Ugx: 245,000</string>
     <string name="date">21/02/2021</string>
+    <string name="acc_details">Your Account Details</string>
+    <string name="phone_number">Enter Phone Number</string>
+    <string name="first_name">Enter First Name</string>
+    <string name="last_name">Enter Last Name</string>
+
+    <string name="settings_names">user names : </string>
+    <string name="settings_acc_bal">account_balance</string>
+    <string name="balance">Ugx: 245,000</string>
+    <string name="phone">0780730001</string>
+    <string name="settings_phone_num">phone Number : </string>
 
     <!--  DEFAULT ENCRYPTION KEY  -->
     <string name="default_public_key">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCs8WHGqtb/6Q/aCi5qPiOf5PzLnyNpkNlj9b8N2d6F/H4y4RZVLL6z/o6HOLJMPNOhnsCtZIKigKeTkhDL5KkQMv0u0HullPIVHe/tmeULF0//S8hJGXFrC9FvNRKM2K37InevYn99kqd71W4pXYQd1lcYNwjAbcQKzSgID58DgQIDAQAB</string>

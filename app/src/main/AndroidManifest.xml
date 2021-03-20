@@ -15,16 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCDSC">
-        <activity android:name=".SettingsActivity"></activity>
+
         <!-- ACTIVITIES -->
         <activity
             android:name=".PaymentHistory"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".SignUp"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-        <activity
-            android:name=".TopUpActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TopUpActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
@@ -41,6 +41,10 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".SettingsActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+
     </application>
 
 </manifest>

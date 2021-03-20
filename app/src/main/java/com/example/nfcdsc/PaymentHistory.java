@@ -15,6 +15,7 @@ public class PaymentHistory extends AppCompatActivity {
 
     TextView account_balance_txt;
 
+    //Global Variables to store the data from the MainActivity and the top up activity.
     String account_balance;
     double current_amount = 60000d;
 
