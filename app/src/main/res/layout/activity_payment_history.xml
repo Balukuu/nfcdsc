@@ -10,15 +10,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="350dp"
-        android:layout_height="680dp"
+        android:layout_height="640dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/history_txt"
@@ -39,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:src="@drawable/ic_baseline_settings_24"
             android:onClick="viewSettings"
+            android:src="@drawable/ic_baseline_settings_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@id/history_txt"
@@ -68,20 +67,20 @@
             app:layout_constraintStart_toStartOf="@id/history_txt"
             app:layout_constraintTop_toBottomOf="@id/history_txt" />
 
-            <ImageView
-                android:id="@+id/user_avatar"
-                android:layout_width="78dp"
-                android:layout_height="78dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/user_avatar"
-                android:src="@drawable/ic_launcher_foreground"
-                android:tint="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/back_view"
-                app:layout_constraintStart_toStartOf="@+id/back_view"
-                app:layout_constraintTop_toTopOf="@+id/back_view" />
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/user_avatar"
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/back_view"
+            app:layout_constraintStart_toStartOf="@+id/back_view"
+            app:layout_constraintTop_toTopOf="@+id/back_view" />
 
         <TextView
             android:id="@+id/user_name"
@@ -120,5 +119,26 @@
             tools:listitem="@layout/user_data" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- THE BOTTOM NAVIGATION VIEW LAYOUT -->
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/back_view"
+            app:menu="@menu/bottom_navigation_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
