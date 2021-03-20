@@ -46,7 +46,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.io.IOException;
 
 public class MainActivity extends Activity {
-    private static final String TAG = "stickynotes";
+    private static final String TAG = "Contactless Payment";
     private boolean mResumed = false;
     private boolean mWriteMode = false;
     NfcAdapter mNfcAdapter;
