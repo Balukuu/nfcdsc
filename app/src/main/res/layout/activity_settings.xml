@@ -8,8 +8,8 @@
     tools:context=".SettingsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="270dp"
-        android:layout_height="500dp"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/design"
         android:orientation="horizontal"
@@ -47,7 +47,7 @@
         <!-- Layout for the user names -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/names_layout"
-            android:layout_width="225dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@+id/user_avatar"
             app:layout_constraintHorizontal_bias="0.503"
@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
+                android:textSize="@dimen/caption_size"
                 android:text="@string/username"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="@color/design_default_color_primary_dark"
@@ -86,7 +87,7 @@
         <!-- Layout for the account balance -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/balance_layout"
-            android:layout_width="225dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/names_layout"
@@ -101,6 +102,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="@string/settings_acc_bal"
+                android:textSize="@dimen/caption_size"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="@color/design_default_color_primary_dark"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +129,7 @@
         <!-- Layout for the account balance -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/phone_layout"
-            android:layout_width="225dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/balance_layout"
@@ -141,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
+                android:textSize="@dimen/caption_size"
                 android:text="@string/settings_phone_num"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:textColor="@color/design_default_color_primary_dark"
@@ -163,27 +166,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/phone_label" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/settings_phone_num"
-            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            app:hintTextColor="@color/design_default_color_primary_dark"
-            app:layout_constraintEnd_toEndOf="@+id/phone_layout"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/phone_layout"
-            app:layout_constraintTop_toBottomOf="@+id/phone_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
