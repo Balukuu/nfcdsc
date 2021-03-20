@@ -11,6 +11,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.nfcdsc.adapters.RecyclerViewAdapter;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,8 @@ public class SettingsActivity extends AppCompatActivity {
         acc_balance.setText(balance);
         phoneNo.setText(phone);
 
+        //Functions
+        handleBottomNavBarActions();
     }
 
     @Override
@@ -49,5 +52,31 @@ public class SettingsActivity extends AppCompatActivity {
         
         //function to terminate the activity
         finish();
+    }
+
+    public void handleBottomNavBarActions(){
+
+        //Handling the Bottom navigation view actions
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_nav_bar);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+            switch (item.getItemId()){
+                case R.id.tap2pay:
+                    break;
+                case R.id.topup_activity:
+                    startActivity(new Intent(this, TopUpActivity.class));
+                    break;
+                case R.id.payment_history_activity:
+                    startActivity(new Intent(this, PaymentHistory.class));
+                    break;
+                case R.id.profile:
+                    startActivity(new Intent(this, SettingsActivity.class));
+                    break;
+
+            }
+            return false;
+        });
     }
 }

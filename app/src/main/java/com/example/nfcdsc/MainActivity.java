@@ -93,16 +93,18 @@ public class MainActivity extends Activity {
                 case R.id.tap2pay:
                     break;
                 case R.id.topup_activity:
+                    startActivity(new Intent(this, TopUpActivity.class));
                     break;
                 case R.id.payment_history_activity:
+                    startActivity(new Intent(this, PaymentHistory.class));
                     break;
                 case R.id.profile:
+                    startActivity(new Intent(this, SettingsActivity.class));
                     break;
 
             }
             return false;
         });
-
 
     }
 
