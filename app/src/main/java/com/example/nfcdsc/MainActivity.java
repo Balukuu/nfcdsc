@@ -32,11 +32,15 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 
@@ -78,6 +82,28 @@ public class MainActivity extends Activity {
         // Intent filters for writing to a tag
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
+
+        //Handling the Bottom navigation view actions
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+        findViewById(R.id.bottom_nav_bar);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+
+            switch (item.getItemId()){
+                case R.id.tap2pay:
+                    break;
+                case R.id.topup_activity:
+                    break;
+                case R.id.payment_history_activity:
+                    break;
+                case R.id.profile:
+                    break;
+
+            }
+            return false;
+        });
+
+
     }
 
     @Override

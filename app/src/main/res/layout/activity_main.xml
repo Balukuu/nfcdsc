@@ -14,11 +14,10 @@
         android:background="@drawable/design"
         android:orientation="horizontal"
         android:padding="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338">
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:id="@+id/back_view"
@@ -33,12 +32,12 @@
             android:id="@+id/tap2pay_icon"
             android:layout_width="106dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/icon_desc"
             android:src="@drawable/ic_baseline_tap_and_play_24"
             app:layout_constraintBottom_toBottomOf="@+id/back_view"
             app:layout_constraintEnd_toEndOf="@+id/back_view"
             app:layout_constraintStart_toStartOf="@+id/back_view"
-            app:layout_constraintTop_toTopOf="@+id/back_view"
-            android:contentDescription="@string/icon_desc" />
+            app:layout_constraintTop_toTopOf="@+id/back_view" />
 
         <View
             android:id="@+id/back_view_outline"
@@ -71,15 +70,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:background="@drawable/back_view_outline"
             android:gravity="top"
             android:hint="@string/enter_amount"
-            android:background="@drawable/back_view_outline"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:textColor="@color/design_default_color_primary_dark"
-            android:textColorHint="@color/design_default_color_primary_dark"
             android:padding="5dp"
             android:textAlignment="center"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textColorHint="@color/design_default_color_primary_dark"
             app:layout_constraintEnd_toEndOf="@+id/tap_txtView"
             app:layout_constraintStart_toStartOf="@+id/tap_txtView"
             app:layout_constraintTop_toBottomOf="@+id/tap_txtView"
@@ -103,8 +102,8 @@
             android:layout_marginStart="194dp"
             android:layout_marginLeft="194dp"
             android:layout_marginTop="20dp"
-            android:text="@string/account_balance"
             android:onClick="viewAccountBalance"
+            android:text="@string/account_balance"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/design_default_color_primary_dark"
             app:layout_constraintEnd_toEndOf="@+id/write_tag"
@@ -113,5 +112,26 @@
             app:layout_constraintTop_toBottomOf="@+id/write_tag" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- THE BOTTOM NAVIGATION VIEW LAYOUT -->
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/back_view"
+            app:menu="@menu/bottom_navigation_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

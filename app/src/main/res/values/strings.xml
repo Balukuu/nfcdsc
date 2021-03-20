@@ -33,6 +33,7 @@
     <string name="settings_phone_num">phone Number : </string>
 
     <!--  BOTTOM NAVIGATION BAR TITLES -->
+    <string name="tap2pay_title"> PAY </string>
     <string name="top_up_title"> TOP UP </string>
     <string name="payment_history_title"> HISTORY </string>
     <string name="account_title"> PROFILE </string>
