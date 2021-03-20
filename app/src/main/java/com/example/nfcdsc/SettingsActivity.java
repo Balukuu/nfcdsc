@@ -63,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // CHECKING THE CURRENT CLICKED BOTTOM NAV BAR MENU ITEM
         Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
+        MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {

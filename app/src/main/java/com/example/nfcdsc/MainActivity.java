@@ -32,6 +32,7 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -83,29 +84,8 @@ public class MainActivity extends Activity {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
 
-        //Handling the Bottom navigation view actions
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-        findViewById(R.id.bottom_nav_bar);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
-            switch (item.getItemId()){
-                case R.id.tap2pay:
-                    break;
-                case R.id.topup_activity:
-                    startActivity(new Intent(this, TopUpActivity.class));
-                    break;
-                case R.id.payment_history_activity:
-                    startActivity(new Intent(this, PaymentHistory.class));
-                    break;
-                case R.id.profile:
-                    startActivity(new Intent(this, SettingsActivity.class));
-                    break;
-
-            }
-            return false;
-        });
-
+        // Function to hanlde the bottom nav bar
+        handleBottomNavBarActions();
     }
 
     @Override
@@ -318,6 +298,36 @@ public class MainActivity extends Activity {
 
     public void viewAccountBalance(View view){
         startActivity(new Intent(this, PaymentHistory.class));
+    }
+
+    // Function handling the bottom nav bar
+    private void handleBottomNavBarActions(){
+
+        //Handling the Bottom navigation view actions
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_nav_bar);
+
+        // CHECKING THE CURRENT CLICKED BOTTOM NAV BAR MENU ITEM
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.tap2pay:
+                    break;
+                case R.id.topup_activity:
+                    startActivity(new Intent(this, TopUpActivity.class));
+                    break;
+                case R.id.payment_history_activity:
+                    startActivity(new Intent(this, PaymentHistory.class));
+                    break;
+                case R.id.profile:
+                    startActivity(new Intent(this,SettingsActivity.class));
+                    break;
+            }
+            return false;
+        });
     }
 
     private void toast(String text) {
