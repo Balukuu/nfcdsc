@@ -25,7 +25,9 @@
     <string name="phone_number">Enter Phone Number</string>
     <string name="first_name">Enter First Name</string>
     <string name="last_name">Enter Last Name</string>
-
+    <string name="verification_code">Enter verification code: </string>
+    <string name="code_hint">Enter Code Here </string>
+    
     <string name="settings_names">user names : </string>
     <string name="settings_acc_bal">account_balance</string>
     <string name="balance">Ugx: 245,000</string>
