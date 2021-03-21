@@ -39,49 +39,18 @@ public class SignUp extends AppCompatActivity {
             phone = phoneNo.getText().toString();
 
             if (!firstname.isEmpty() && !lastname.isEmpty() && !phone.isEmpty()) {
-//                Intent intent = new Intent(this, SettingsActivity.class);
-//                intent.putExtra("USERNAME", firstname);
-//                intent.putExtra("BALANCE", lastname);
-//                intent.putExtra("CONTACT", phone);
-                //startActivity(intent);
-                //finish();
-                customAlertDialog();
+                Intent intent = new Intent(this, SettingsActivity.class);
+                intent.putExtra("USERNAME", firstname);
+                intent.putExtra("BALANCE", lastname);
+                intent.putExtra("CONTACT", phone);
+                startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(this, " ENTER YOUR DETAILS ",
                         Toast.LENGTH_SHORT).show();
                 fname.requestFocus();
             }
         });
-    }
-
-    void customAlertDialog() {
-        // get alert_dialog.xml view
-        LayoutInflater li = LayoutInflater.from(getApplicationContext());
-        View promptsView = li.inflate(R.layout.alert_dialog, null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                getApplicationContext());
-        // set alert_dialog.xml to alertdialog builder
-        alertDialogBuilder.setView(promptsView);
-        final EditText userInput = (EditText) promptsView.findViewById(R.id.verification_code);
-        // set dialog message
-        alertDialogBuilder
-                .setCancelable(false)
-                .setPositiveButton("OK", (dialog, id) -> {
-                    // get user input and set it to result
-// edit text
-                    Toast.makeText(getApplicationContext(), "Entered: "
-                            +userInput.getText().toString(), Toast.LENGTH_LONG).show();
-                })
-                .setNegativeButton("Cancel",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        // show it
-        alertDialog.show();
     }
 
 }
