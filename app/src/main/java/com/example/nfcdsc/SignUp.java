@@ -1,9 +1,13 @@
 package com.example.nfcdsc;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,6 +51,36 @@ public class SignUp extends AppCompatActivity {
                 fname.requestFocus();
             }
         });
-
     }
+
+    void customAlertDialog() {
+        // get alert_dialog.xml view
+        LayoutInflater li = LayoutInflater.from(getApplicationContext());
+        View promptsView = li.inflate(R.layout.alert_dialog, null);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getApplicationContext());
+        // set alert_dialog.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+        final EditText userInput = (EditText) promptsView.findViewById(R.id.etUserInput);
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK", (dialog, id) -> {
+                    // get user input and set it to result
+// edit text
+                    Toast.makeText(getApplicationContext(), "Entered: "
+                            +userInput.getText().toString(), Toast.LENGTH_LONG).show();
+                })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        // show it
+        alertDialog.show();
+    }
+
 }
