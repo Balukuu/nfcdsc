@@ -39,12 +39,13 @@ public class SignUp extends AppCompatActivity {
             phone = phoneNo.getText().toString();
 
             if (!firstname.isEmpty() && !lastname.isEmpty() && !phone.isEmpty()) {
-                Intent intent = new Intent(this, SettingsActivity.class);
-                intent.putExtra("USERNAME", firstname);
-                intent.putExtra("BALANCE", lastname);
-                intent.putExtra("CONTACT", phone);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(this, SettingsActivity.class);
+//                intent.putExtra("USERNAME", firstname);
+//                intent.putExtra("BALANCE", lastname);
+//                intent.putExtra("CONTACT", phone);
+                //startActivity(intent);
+                //finish();
+                customAlertDialog();
             } else {
                 Toast.makeText(this, " ENTER YOUR DETAILS ",
                         Toast.LENGTH_SHORT).show();
@@ -61,7 +62,7 @@ public class SignUp extends AppCompatActivity {
                 getApplicationContext());
         // set alert_dialog.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
-        final EditText userInput = (EditText) promptsView.findViewById(R.id.etUserInput);
+        final EditText userInput = (EditText) promptsView.findViewById(R.id.verification_code);
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
