@@ -8,6 +8,10 @@
     tools:context=".SignUp"
     android:background="@drawable/ic_new_bg">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/back_layout_width"
         android:layout_height="@dimen/back_layout_height"
@@ -36,7 +40,7 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/ic_baseline_verified_user_24"
             app:layout_constraintEnd_toEndOf="@+id/signup_heading"
             app:layout_constraintHorizontal_bias="0.496"
@@ -47,7 +51,7 @@
             android:id="@+id/first_name"
             android:layout_width="@dimen/editTxt_width"
             android:layout_height="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/back_view_outline"
             android:gravity="top"
             android:hint="@string/first_name"
@@ -120,5 +124,7 @@
             app:layout_constraintTop_toBottomOf="@+id/phone_number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
