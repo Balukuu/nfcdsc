@@ -57,23 +57,24 @@ public class SignUp extends AppCompatActivity {
 
             //Function Sending the OTP code request
             getOTP();
+//            firstname = fname.getText().toString();
+//            lastname = lname.getText().toString();
+//            phone = phoneNo.getText().toString();
+//
+//            if (!firstname.isEmpty() && !lastname.isEmpty() && !phone.isEmpty()) {
+//                Intent intent = new Intent(this, SettingsActivity.class);
+//                intent.putExtra("USERNAME", firstname);
+//                intent.putExtra("BALANCE", lastname);
+//                intent.putExtra("CONTACT", phone);
+//                startActivity(intent);
+//                finish();
+//            } else {
+//                Toast.makeText(this, " ENTER YOUR DETAILS ",
+//                        Toast.LENGTH_SHORT).show();
+//                fname.requestFocus();
+//            }
 
-            firstname = fname.getText().toString();
-            lastname = lname.getText().toString();
-            phone = phoneNo.getText().toString();
 
-            if (!firstname.isEmpty() && !lastname.isEmpty() && !phone.isEmpty()) {
-                Intent intent = new Intent(this, SettingsActivity.class);
-                intent.putExtra("USERNAME", firstname);
-                intent.putExtra("BALANCE", lastname);
-                intent.putExtra("CONTACT", phone);
-                startActivity(intent);
-                finish();
-            } else {
-                Toast.makeText(this, " ENTER YOUR DETAILS ",
-                        Toast.LENGTH_SHORT).show();
-                fname.requestFocus();
-            }
         });
 
         mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -127,7 +128,6 @@ public class SignUp extends AppCompatActivity {
 
         //Capturing the users phone number
         phone = phoneNo.getText().toString();
-
         if (!phone.isEmpty()){
             PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mFirebaseAuth)
                     .setPhoneNumber(phone)
@@ -137,9 +137,7 @@ public class SignUp extends AppCompatActivity {
                     .build();
 
             PhoneAuthProvider.verifyPhoneNumber(options);
-
         }
-
     }
 
     //Function to route a  user to the main activity for payment if their are logged in
