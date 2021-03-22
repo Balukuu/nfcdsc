@@ -147,11 +147,6 @@ public class SignUp extends AppCompatActivity {
         finish();
     }
 
-    //Toast method
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
-
     //Sign in function
     private void signIn(PhoneAuthCredential credential){
         mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -164,4 +159,10 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
+    //Toast method
+    private void toast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
 }
