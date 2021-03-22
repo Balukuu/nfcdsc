@@ -17,6 +17,7 @@
     <string name="top_up_btn_txt"> TOP UP </string>
     <string name="icon_desc">ICON IMAGE FOR TAP2PAY</string>
     <string name="send_otp"> SEND VERIFICATION CODE </string>
+    <string name="otp"> ENTER VERIFICATION CODE </string>
     <string name="sign_up"> SIGN UP </string>
     <string name="payment_title"> Payment History </string>
     <string name="username">Username</string>
@@ -28,7 +29,7 @@
     <string name="last_name">Enter Last Name</string>
     <string name="verification_code">Enter verification code: </string>
     <string name="code_hint">Enter Code Here </string>
-    
+
     <string name="settings_names">user names : </string>
     <string name="settings_acc_bal">account_balance</string>
     <string name="balance">Ugx: 245,000</string>
