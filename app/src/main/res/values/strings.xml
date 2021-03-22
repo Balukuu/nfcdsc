@@ -16,7 +16,8 @@
     <string name="top_up_hint"> Enter amount  </string>
     <string name="top_up_btn_txt"> TOP UP </string>
     <string name="icon_desc">ICON IMAGE FOR TAP2PAY</string>
-    <string name="sign_up">SIGN UP </string>
+    <string name="send_otp"> SEND VERIFICATION CODE </string>
+    <string name="sign_up"> SIGN UP </string>
     <string name="payment_title"> Payment History </string>
     <string name="username">Username</string>
     <string name="user_avatar">user avatar</string>
