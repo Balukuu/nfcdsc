@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -90,11 +91,18 @@ public class SignUp extends AppCompatActivity {
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
 
-                toast("OTP CODE HAS BEEN SENT");
+                //Delaying the routing to the Verification Activity
+                // for user to manually enter the OTP code.
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        toast("OTP CODE HAS BEEN SENT");
+                        Intent otpIntent = new Intent(SignUp.this, VerificationActivity.class);
+                        otpIntent.putExtra("OTP_CODE", s);
+                        startActivity(otpIntent);
+                    }
+                }, 10000);
 
-                Intent otpIntent = new Intent(SignUp.this, VerificationActivity.class);
-                otpIntent.putExtra("OTP_CODE", s);
-                startActivity(otpIntent);
 
             }
         };
