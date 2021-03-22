@@ -17,6 +17,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     //UI Global variables

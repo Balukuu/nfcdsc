@@ -14,6 +14,12 @@ import android.widget.TextView;
 import com.example.nfcdsc.adapters.RecyclerViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class PaymentHistory extends AppCompatActivity {
 
     TextView account_balance_txt;

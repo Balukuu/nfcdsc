@@ -17,6 +17,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class VerificationActivity extends AppCompatActivity {
 
     //UI Views

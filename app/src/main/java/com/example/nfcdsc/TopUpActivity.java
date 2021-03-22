@@ -11,6 +11,12 @@ import android.widget.EditText;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class TopUpActivity extends AppCompatActivity {
     private Button topUp;
 

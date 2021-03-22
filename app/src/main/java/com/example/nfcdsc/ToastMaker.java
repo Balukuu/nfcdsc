@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 /**
  *
- * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com>
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
  *
  */
 public class ToastMaker {
