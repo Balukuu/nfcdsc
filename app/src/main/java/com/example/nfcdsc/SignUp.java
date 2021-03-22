@@ -4,15 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -85,7 +81,7 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(@NonNull FirebaseException e) {
-                toast("TRY AGAIN. VERIFICATION HAS NOT BEEN SENT ! ");
+                ToastMaker.toast(SignUp.this,"TRY AGAIN. VERIFICATION HAS NOT BEEN SENT ! ");
             }
 
             @Override
@@ -97,7 +93,7 @@ public class SignUp extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        toast("OTP CODE HAS BEEN SENT");
+                        ToastMaker.toast(SignUp.this,"OTP CODE HAS BEEN SENT");
                         Intent otpIntent = new Intent(SignUp.this, VerificationActivity.class);
                         otpIntent.putExtra("OTP_CODE", s);
                         startActivity(otpIntent);
@@ -119,7 +115,7 @@ public class SignUp extends AppCompatActivity {
         if (currentUser!=null){
             routeToMain();
         }else{
-            toast("You are not signed up yet");
+            ToastMaker.toast(SignUp.this,"You are not signed up yet");
             signup.requestFocus();
         }
     }
@@ -158,10 +154,4 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
-
-    //Toast method
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-    }
-
 }
