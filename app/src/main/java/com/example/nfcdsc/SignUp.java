@@ -112,6 +112,7 @@ public class SignUp extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        //Checking if user is logged in already
         FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
 
         if (currentUser!=null){

@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -57,6 +58,19 @@ public class VerificationActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //Checking if user is logged in already
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+
+        if (currentUser!=null){
+            routeToMain();
+        }else{
+            toast("You are not signed up yet");
+        }
     }
 
     //Toast method
