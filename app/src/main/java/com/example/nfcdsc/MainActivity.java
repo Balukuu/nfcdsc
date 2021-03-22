@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
 
-            toast("P2P DATA EXCHANGE");
+            ToastMaker.toast(MainActivity.this,"P2P DATA EXCHANGE");
 
         }
         // Tag writing mode
@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             writeTag(getNoteAsNdef(), detectedTag);
 
-            toast("WRITING TO TAG");
+            ToastMaker.toast(MainActivity.this,"WRITING TO TAG");
         }
     }
 
@@ -246,17 +246,18 @@ public class MainActivity extends Activity {
                 ndef.connect();
 
                 if (!ndef.isWritable()) {
-                    toast("Tag is read-only.");
+                    ToastMaker.toast(MainActivity.this,"Tag is read-only.");
                     return false;
                 }
                 if (ndef.getMaxSize() < size) {
-                    toast("Tag capacity is " + ndef.getMaxSize() + " bytes, message is " + size
+                    ToastMaker.toast(MainActivity.this,"Tag capacity is "
+                            + ndef.getMaxSize() + " bytes, message is " + size
                             + " bytes.");
                     return false;
                 }
 
                 ndef.writeNdefMessage(message);
-                toast("Wrote message to pre-formatted tag.");
+                ToastMaker.toast(MainActivity.this,"Wrote message to pre-formatted tag.");
                 return true;
             } else {
                 NdefFormatable format = NdefFormatable.get(tag);
@@ -264,19 +265,19 @@ public class MainActivity extends Activity {
                     try {
                         format.connect();
                         format.format(message);
-                        toast("Formatted tag and wrote message");
+                        ToastMaker.toast(MainActivity.this,"Formatted tag and wrote message");
                         return true;
                     } catch (IOException e) {
-                        toast("Failed to format tag.");
+                        ToastMaker.toast(MainActivity.this,"Failed to format tag.");
                         return false;
                     }
                 } else {
-                    toast("Tag doesn't support NDEF.");
+                    ToastMaker.toast(MainActivity.this,"Tag doesn't support NDEF.");
                     return false;
                 }
             }
         } catch (Exception e) {
-            toast("Failed to write tag");
+            ToastMaker.toast(MainActivity.this, "Failed to write tag");
         }
 
         return false;
@@ -310,9 +311,5 @@ public class MainActivity extends Activity {
             }
             return false;
         });
-    }
-
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }
