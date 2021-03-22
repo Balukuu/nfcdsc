@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -54,7 +53,8 @@ public class VerificationActivity extends AppCompatActivity {
 
                     signIn(credential);
                 }else{
-                    toast("PLEASE ENTER THE OTP CODE THAT HAS BEEN SENT 🤨🤨🤨");
+                    ToastMaker.toast(VerificationActivity.this,
+                            "PLEASE ENTER THE OTP CODE THAT HAS BEEN SENT 🤨");
                 }
             }
         });
@@ -69,13 +69,8 @@ public class VerificationActivity extends AppCompatActivity {
         if (currentUser!=null){
             routeToMain();
         }else{
-            toast("You are not signed up yet");
+            ToastMaker.toast(VerificationActivity.this, "You are not signed up yet");
         }
-    }
-
-    //Toast method
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     //Function to route a  user to the main activity for payment if their are logged in
