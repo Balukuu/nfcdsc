@@ -20,10 +20,11 @@
     <string name="otp"> ENTER VERIFICATION CODE </string>
     <string name="sign_up"> SIGN UP </string>
     <string name="payment_title"> Payment History </string>
-    <string name="username">Username</string>
+    <string name="username">Username : </string>
+    <string name="uname"> code_maestro </string>
     <string name="user_avatar">user avatar</string>
     <string name="date">21/02/2021</string>
-    <string name="acc_details">Your Account Details</string>
+    <string name="acc_details">Account Details</string>
     <string name="phone_number">Enter Phone Number</string>
     <string name="first_name">Enter First Name</string>
     <string name="last_name">Enter Last Name</string>
@@ -31,10 +32,10 @@
     <string name="code_hint">Enter Code Here </string>
 
     <string name="settings_names">user names : </string>
-    <string name="settings_acc_bal">account_balance</string>
+    <string name="settings_acc_bal">Account balance : </string>
     <string name="balance">Ugx: 245,000</string>
     <string name="phone">0780730001</string>
-    <string name="settings_phone_num">phone Number : </string>
+    <string name="settings_phone_num">Phone number : </string>
 
     <!--  BOTTOM NAVIGATION BAR TITLES -->
     <string name="tap2pay_title"> PAY </string>

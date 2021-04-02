@@ -20,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -28,12 +27,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class MainActivity extends Activity {
     private static final String TAG = "Contactless Payment";
     private boolean mResumed = false;
     private boolean mWriteMode = false;
     NfcAdapter mNfcAdapter;
-    EditText mNote;
+    EditText mMoney;
+
+    String storedMoney, transferMoney;
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
@@ -47,9 +54,12 @@ public class MainActivity extends Activity {
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
-        mNote = ((EditText) findViewById(R.id.note));
-        mNote.addTextChangedListener(mTextWatcher);
+        findViewById(R.id.process_payment).setOnClickListener(mTransfer);
+        mMoney = ((EditText) findViewById(R.id.note));
+
+        storedMoney = mMoney.getText().toString();
+
+        mMoney.addTextChangedListener(mTextWatcher);
 
         // Handle all of our received NFC intents in this activity.
         mNfcPendingIntent = PendingIntent.getActivity(this, 0,
@@ -75,12 +85,12 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         mResumed = true;
-        // Sticky notes received from Android
+        //Data received from Android
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             NdefMessage[] messages = getNdefMessages(getIntent());
             byte[] payload = messages[0].getRecords()[0].getPayload();
             setNoteBody(new String(payload));
-            setIntent(new Intent()); // Consume this intent.
+            setIntent(new Intent());
         }
         enableNdefExchangeMode();
     }
@@ -102,7 +112,7 @@ public class MainActivity extends Activity {
             ToastMaker.toast(MainActivity.this,"P2P DATA EXCHANGE");
 
         }
-        // Tag writing mode
+        // Writing to the receiving device
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             writeTag(getNoteAsNdef(), detectedTag);
@@ -131,21 +141,32 @@ public class MainActivity extends Activity {
         }
     };
 
-    private View.OnClickListener mTagWriter = arg0 -> {
+    private View.OnClickListener mTransfer = arg0 -> {
         // Write to a tag for as long as the dialog is shown.
         disableNdefExchangeMode();
         enableTagWriteMode();
+//
+//        new AlertDialog.Builder(MainActivity.this)
+//                .setTitle("Tap the device to pay")
+//                .setOnCancelListener(dialog -> {
+//
+//                    disableTagWriteMode();
+//                    enableNdefExchangeMode();
+//
+//                })
+//                .create()
+//                .show();
 
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Touch tag to write")
-                .setOnCancelListener(dialog -> {
+        String paid = mMoney.getText().toString();
 
-                    disableTagWriteMode();
-                    enableNdefExchangeMode();
+        if(paid.isEmpty()){
+            ToastMaker.toast(this, "Make a transaction first ! ");
+        }else{
+            Intent transferIntent = new Intent(this, PaymentHistory.class);
+            transferIntent.putExtra("PAID", paid);
 
-                })
-                .create()
-                .show();
+            startActivity(transferIntent);
+        }
     };
 
     private void promptForContent(final NdefMessage msg) {
@@ -156,25 +177,32 @@ public class MainActivity extends Activity {
                     String body = new String(msg.getRecords()[0].getPayload());
 
                     //Converting the received data to double for the calculations
-                    double amount_paid = Integer.parseInt(body);
+                    //double amount_paid = Integer.parseInt(body);
 
-                    Intent intent = new Intent(this, PaymentHistory.class);
-                    intent.putExtra("AMOUNT CHARGED", amount_paid);
-                    startActivity(intent);
+//                    Intent intent = new Intent(this, PaymentHistory.class);
+//                    intent.putExtra("AMOUNT", body);
+//                    startActivity(intent);
                     setNoteBody(body);
+
+                    /**
+                     * Function to send the money to the payment activity
+                     * @params money_paid
+                     * the parameter above is the NDEFMessage received
+                     */
                 })
                 .setNegativeButton("No", (arg0, arg1) -> {
                 }).show();
     }
 
+    //Function to set the received data to the edit text
     private void setNoteBody(String body) {
-        Editable text = mNote.getText();
+        Editable text = mMoney.getText();
         text.clear();
         text.append(body);
     }
 
     private NdefMessage getNoteAsNdef() {
-        byte[] textBytes = mNote.getText().toString().getBytes();
+        byte[] textBytes = mMoney.getText().toString().getBytes();
         NdefRecord textRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, "text/plain".getBytes(),
                 new byte[] {}, textBytes);
         return new NdefMessage(new NdefRecord[] {

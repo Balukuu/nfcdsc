@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.nfcdsc.db_objects.Data;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -19,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,7 +31,6 @@ import java.util.concurrent.TimeUnit;
  * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
  *
  */
-
 public class SignUp extends AppCompatActivity {
 
     //Global variables for UI components
@@ -46,7 +49,10 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        //Instantiating firebase authentication
+        /**
+         *
+         * Instantiating firebase authentication
+         */
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         //Binding the xml to java
@@ -76,7 +82,6 @@ public class SignUp extends AppCompatActivity {
 //                fname.requestFocus();
 //            }
 
-
         });
 
         mCallBacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -94,19 +99,17 @@ public class SignUp extends AppCompatActivity {
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
 
-                //Delaying the routing to the Verification Activity
-                // for user to manually enter the OTP code.
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        ToastMaker.toast(SignUp.this,"OTP CODE HAS BEEN SENT");
-                        Intent otpIntent = new Intent(SignUp.this, VerificationActivity.class);
-                        otpIntent.putExtra("OTP_CODE", s);
-                        startActivity(otpIntent);
-                    }
+                /**
+                 * Delaying the routing to the Verification Activity
+                 *  for user to manually enter the OTP code.
+                 *
+                 */
+                new Handler().postDelayed(() -> {
+                    ToastMaker.toast(SignUp.this,"OTP CODE HAS BEEN SENT");
+                    Intent otpIntent = new Intent(SignUp.this, VerificationActivity.class);
+                    otpIntent.putExtra("OTP_CODE", s);
+                    //startActivity(otpIntent);
                 }, 10000);
-
-
             }
         };
     }
@@ -115,7 +118,11 @@ public class SignUp extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        //Checking if user is logged in already
+        /**
+         *
+         *  Checking if user is logged in already
+         *
+         */
         FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
 
         if (currentUser!=null){
@@ -150,13 +157,28 @@ public class SignUp extends AppCompatActivity {
 
     //Sign in function
     private void signIn(PhoneAuthCredential credential){
-        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    //routing user to main activity if verification is done automatically
-                    routeToMain();
-                }
+        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+
+            /**
+             *  Getting the realtime database instance and a reference to the database
+             *
+             */
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference reference = database.getReference().child("user_data");
+
+                firstname = fname.getText().toString();
+                lastname = lname.getText().toString();
+                phone = phoneNo.getText().toString();
+
+                Data user_data = new Data(firstname, lastname, phone, "sh.340,000");
+                reference.push().setValue(user_data);
+
+            /**
+             *
+             * function routing user to main activity if verification is done automatically
+             */
+                routeToMain();
             }
         });
     }

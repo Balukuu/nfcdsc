@@ -1,5 +1,7 @@
 package com.example.nfcdsc;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,9 +13,17 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.nfcdsc.adapters.RecyclerViewAdapter;
+import com.example.nfcdsc.db_objects.Data;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -26,7 +36,8 @@ import java.util.ArrayList;
 public class SettingsActivity extends AppCompatActivity {
 
     //UI Global variables
-    private EditText names, acc_balance, phoneNo;
+    private EditText names, phoneNo;
+    private TextView acc_balance;
     //Global properties
     private String username, balance, phone;
 
@@ -36,22 +47,60 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //Binding the UI variables to their xml ids
-        names = findViewById(R.id.names_field);
+        names = findViewById(R.id.username_field);
         acc_balance = findViewById(R.id.balance_field);
-        phoneNo = findViewById(R.id.phone_field);
+        phoneNo = findViewById(R.id.phone_number_field);
 
-        Intent stringIntent = getIntent();
+//        Intent stringIntent = getIntent();
 
-        username = stringIntent.getStringExtra("USERNAME");
-        balance = stringIntent.getStringExtra("BALANCE");
-        phone = stringIntent.getStringExtra("CONTACT");
-
-        names.setText(username);
-        acc_balance.setText(balance);
-        phoneNo.setText(phone);
+//        username = stringIntent.getStringExtra("USERNAME");
+//        balance = stringIntent.getStringExtra("BALANCE");
+//        phone = stringIntent.getStringExtra("CONTACT");
+//
+//        names.setText(username);
+//        acc_balance.setText(balance);
+//        phoneNo.setText(phone);
 
         //Functions
         handleBottomNavBarActions();
+        retrieveUserData();
+    }
+
+    /**
+     *
+     * Function to read data from the firebase realtime database.
+     */
+    private void retrieveUserData(){
+        /**
+         *
+         * Getting the realtime database instance and a reference to the database
+         */
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference().child("user_data/-MWiSGkq-y3J6TDvpl2s");
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Data post = dataSnapshot.getValue(Data.class);
+
+                assert post != null;
+                username = post.getFirstname();
+                balance = post.getBalance();
+                phone = post.getPhone();
+
+                names.setText(username);
+                acc_balance.setText(balance);
+                phoneNo.setText(phone);
+
+                System.out.println(post);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
 
     @Override
