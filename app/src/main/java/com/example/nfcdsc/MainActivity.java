@@ -1,19 +1,3 @@
-/*
- * Copyright 2011, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.nfcdsc;
 
 import android.app.Activity;
@@ -32,20 +16,31 @@ import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.io.IOException;
 
+/**
+ *
+ * @author Michael Ajuna and Baluku Edgar <michaelajnew@gmail.com, edgarbaluku@gmail.com>
+ *
+ */
+
 public class MainActivity extends Activity {
-    private static final String TAG = "stickynotes";
+    private static final String TAG = "Contactless Payment";
     private boolean mResumed = false;
     private boolean mWriteMode = false;
     NfcAdapter mNfcAdapter;
-    EditText mNote;
+    EditText mMoney;
+
+    String storedMoney, transferMoney;
 
     PendingIntent mNfcPendingIntent;
     IntentFilter[] mWriteTagFilters;
@@ -59,9 +54,12 @@ public class MainActivity extends Activity {
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        findViewById(R.id.write_tag).setOnClickListener(mTagWriter);
-        mNote = ((EditText) findViewById(R.id.note));
-        mNote.addTextChangedListener(mTextWatcher);
+        findViewById(R.id.process_payment).setOnClickListener(mTransfer);
+        mMoney = ((EditText) findViewById(R.id.note));
+
+        storedMoney = mMoney.getText().toString();
+
+        mMoney.addTextChangedListener(mTextWatcher);
 
         // Handle all of our received NFC intents in this activity.
         mNfcPendingIntent = PendingIntent.getActivity(this, 0,
@@ -78,18 +76,21 @@ public class MainActivity extends Activity {
         // Intent filters for writing to a tag
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         mWriteTagFilters = new IntentFilter[] { tagDetected };
+
+        // Function to hanlde the bottom nav bar
+        handleBottomNavBarActions();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mResumed = true;
-        // Sticky notes received from Android
+        //Data received from Android
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             NdefMessage[] messages = getNdefMessages(getIntent());
             byte[] payload = messages[0].getRecords()[0].getPayload();
             setNoteBody(new String(payload));
-            setIntent(new Intent()); // Consume this intent.
+            setIntent(new Intent());
         }
         enableNdefExchangeMode();
     }
@@ -108,15 +109,15 @@ public class MainActivity extends Activity {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
 
-            toast("P2P DATA EXCHANGE");
+            ToastMaker.toast(MainActivity.this,"P2P DATA EXCHANGE");
 
         }
-        // Tag writing mode
+        // Writing to the receiving device
         if (mWriteMode && NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             writeTag(getNoteAsNdef(), detectedTag);
 
-            toast("WRITING TO TAG");
+            ToastMaker.toast(MainActivity.this,"WRITING TO TAG");
         }
     }
 
@@ -140,18 +141,32 @@ public class MainActivity extends Activity {
         }
     };
 
-    private View.OnClickListener mTagWriter = arg0 -> {
+    private View.OnClickListener mTransfer = arg0 -> {
         // Write to a tag for as long as the dialog is shown.
         disableNdefExchangeMode();
         enableTagWriteMode();
+//
+//        new AlertDialog.Builder(MainActivity.this)
+//                .setTitle("Tap the device to pay")
+//                .setOnCancelListener(dialog -> {
+//
+//                    disableTagWriteMode();
+//                    enableNdefExchangeMode();
+//
+//                })
+//                .create()
+//                .show();
 
-        new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
-                .setOnCancelListener(dialog -> {
+        String paid = mMoney.getText().toString();
 
-                    disableTagWriteMode();
-                    enableNdefExchangeMode();
+        if(paid.isEmpty()){
+            ToastMaker.toast(this, "Make a transaction first ! ");
+        }else{
+            Intent transferIntent = new Intent(this, PaymentHistory.class);
+            transferIntent.putExtra("PAID", paid);
 
-                }).create().show();
+            startActivity(transferIntent);
+        }
     };
 
     private void promptForContent(final NdefMessage msg) {
@@ -162,25 +177,32 @@ public class MainActivity extends Activity {
                     String body = new String(msg.getRecords()[0].getPayload());
 
                     //Converting the received data to double for the calculations
-                    double amount_paid = Integer.parseInt(body);
+                    //double amount_paid = Integer.parseInt(body);
 
-                    Intent intent = new Intent(this, PaymentHistory.class);
-                    intent.putExtra("AMOUNT CHARGED", amount_paid);
-                    startActivity(intent);
+//                    Intent intent = new Intent(this, PaymentHistory.class);
+//                    intent.putExtra("AMOUNT", body);
+//                    startActivity(intent);
                     setNoteBody(body);
+
+                    /**
+                     * Function to send the money to the payment activity
+                     * @params money_paid
+                     * the parameter above is the NDEFMessage received
+                     */
                 })
                 .setNegativeButton("No", (arg0, arg1) -> {
                 }).show();
     }
 
+    //Function to set the received data to the edit text
     private void setNoteBody(String body) {
-        Editable text = mNote.getText();
+        Editable text = mMoney.getText();
         text.clear();
         text.append(body);
     }
 
     private NdefMessage getNoteAsNdef() {
-        byte[] textBytes = mNote.getText().toString().getBytes();
+        byte[] textBytes = mMoney.getText().toString().getBytes();
         NdefRecord textRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA, "text/plain".getBytes(),
                 new byte[] {}, textBytes);
         return new NdefMessage(new NdefRecord[] {
@@ -252,17 +274,18 @@ public class MainActivity extends Activity {
                 ndef.connect();
 
                 if (!ndef.isWritable()) {
-                    toast("Tag is read-only.");
+                    ToastMaker.toast(MainActivity.this,"Tag is read-only.");
                     return false;
                 }
                 if (ndef.getMaxSize() < size) {
-                    toast("Tag capacity is " + ndef.getMaxSize() + " bytes, message is " + size
+                    ToastMaker.toast(MainActivity.this,"Tag capacity is "
+                            + ndef.getMaxSize() + " bytes, message is " + size
                             + " bytes.");
                     return false;
                 }
 
                 ndef.writeNdefMessage(message);
-                toast("Wrote message to pre-formatted tag.");
+                ToastMaker.toast(MainActivity.this,"Wrote message to pre-formatted tag.");
                 return true;
             } else {
                 NdefFormatable format = NdefFormatable.get(tag);
@@ -270,29 +293,51 @@ public class MainActivity extends Activity {
                     try {
                         format.connect();
                         format.format(message);
-                        toast("Formatted tag and wrote message");
+                        ToastMaker.toast(MainActivity.this,"Formatted tag and wrote message");
                         return true;
                     } catch (IOException e) {
-                        toast("Failed to format tag.");
+                        ToastMaker.toast(MainActivity.this,"Failed to format tag.");
                         return false;
                     }
                 } else {
-                    toast("Tag doesn't support NDEF.");
+                    ToastMaker.toast(MainActivity.this,"Tag doesn't support NDEF.");
                     return false;
                 }
             }
         } catch (Exception e) {
-            toast("Failed to write tag");
+            ToastMaker.toast(MainActivity.this, "Failed to write tag");
         }
 
         return false;
     }
 
-    public void viewAccountBalance(View view){
-        startActivity(new Intent(this, PaymentHistory.class));
-    }
+    // Function handling the bottom nav bar
+    private void handleBottomNavBarActions(){
 
-    private void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        //Handling the Bottom navigation view actions
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_nav_bar);
+
+        // CHECKING THE CURRENT CLICKED BOTTOM NAV BAR MENU ITEM
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.tap2pay:
+                    break;
+                case R.id.topup_activity:
+                    startActivity(new Intent(this, TopUpActivity.class));
+                    break;
+                case R.id.payment_history_activity:
+                    startActivity(new Intent(this, PaymentHistory.class));
+                    break;
+                case R.id.profile:
+                    startActivity(new Intent(this,SettingsActivity.class));
+                    break;
+            }
+            return false;
+        });
     }
 }

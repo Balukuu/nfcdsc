@@ -9,10 +9,11 @@
     <dimen name="btn_width">245dp</dimen>
     <dimen name="btn_height">45dp</dimen>
     <!--  PADDING DIMENSIONS  -->
-    <dimen name="editTxt_padding">6dp</dimen>
+    <dimen name="editTxt_padding">8dp</dimen>
     <dimen name="date_padding">8dp</dimen>
     <!--  TEXT SIZE DIMENSIONS  -->
-    <dimen name="header_size">24sp</dimen>
+    <dimen name="header_size">34sp</dimen>
+    <dimen name="caption_size">14sp</dimen>
     <!--  MARGIN DIMENSIONS  -->
     <dimen name="default_marginTop">30dp</dimen>
 </resources>

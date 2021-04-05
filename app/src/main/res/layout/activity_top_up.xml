@@ -30,12 +30,11 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/design_default_color_primary_dark"
-            android:textSize="18sp"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <ImageView
             android:id="@+id/top_img"
@@ -50,7 +49,7 @@
         <EditText
             android:id="@+id/note"
             android:layout_width="240dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="40dp"
             android:hint="@string/enter_amount"
             android:background="@drawable/back_view_outline"
@@ -67,18 +66,39 @@
             tools:ignore="RtlCompat" />
 
         <Button
-            android:id="@+id/write_tag"
+            android:id="@+id/process_payment"
             android:layout_width="245dp"
-            style="@style/Widget.MaterialComponents.Button"
-            android:backgroundTint="@color/design_default_color_primary_dark"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/design_default_color_primary_dark"
             android:text="@string/top_up_btn_txt"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/note"
             app:layout_constraintStart_toStartOf="@+id/note"
             app:layout_constraintTop_toBottomOf="@+id/note" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- THE BOTTOM NAVIGATION VIEW LAYOUT -->
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/back_view"
+            app:menu="@menu/bottom_navigation_menu">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
